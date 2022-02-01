@@ -28,16 +28,30 @@ function Homepage() {
           </div>
         </div>
         <div className="second-section">
-          <div className="secondsection-maincontainer">
-            <div className="secondsection-title">
+          <div className="secondsection-leftside"></div>
+          <div className="secondsection-rightside">
+            <div className="secondsection-rightside-upperside">
               <h2>Create an invite-only place where you belong</h2>
             </div>
-            <div className="secondsection-descripition">
+            <div className="secondsection-rightside-lowerside">
               Discord servers are organized into topic-based channels where you
               can collaborate, share, and just talk about your day without
               clogging up a group chat.
             </div>
           </div>
+        </div>
+        <div className="third-section">
+          <div className="thirdsection-leftside">
+            <div className="thirdsection-leftside-upperside">
+              <h2>Where hanging out is easy</h2>
+            </div>
+            <div className="thirdsection-leftside-lowerside">
+              Grab a seat in a voice channel when you’re free. Friends in your
+              server can see you’re around and instantly pop in to talk without
+              having to call.
+            </div>
+          </div>
+          <div className="thirdsection-rightside"></div>
         </div>
       </main>
     </div>

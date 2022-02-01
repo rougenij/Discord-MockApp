@@ -24,7 +24,28 @@ body {
 }
 /* Second Section */
 .second-section {
-  background: url("../../../View/assets/images/second-section-background.jpg")
-    center center / 100% 100% no-repeat;
-  height: 65vh;
+  padding-top: 4rem;
+  background-color: white;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+}
+.secondsection-leftside {
+  background: url("../../../View/assets/images/discord-second-section.png")
+    center center/100% 100% no-repeat;
+  height: 100%;
+  width: 40%;
+}
+
+.secondsection-rightside-upperside {
+  font-size: 1.8rem;
+  max-width: 20ch;
+  font-family: "Ginto Normal", Whitney, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+.secondsection-rightside-lowerside {
+  max-width: 40ch;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
