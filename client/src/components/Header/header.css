@@ -1,0 +1,20 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #404eed;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  padding: 1rem 10rem;
+  font-size: 1.2rem;
+}
+
+.buttons-mid-navbar {
+  display: flex;
+  gap: 1rem;
+}
+
+.logo-leftside {
+  font-size: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}

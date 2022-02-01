@@ -1,0 +1,30 @@
+body {
+  background-color: #404eed;
+}
+/* First Section */
+.first-section {
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../../../View/assets/images/first-section-background.png")
+    center center / 100% 100% no-repeat;
+  height: 65vh;
+  gap: 2rem;
+}
+.firstsection-title {
+  font-family: "Ginto Nord", Whitney, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: 800;
+}
+.firstsection-description {
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/* Second Section */
+.second-section {
+  background: url("../../../View/assets/images/second-section-background.jpg")
+    center center / 100% 100% no-repeat;
+  height: 65vh;
+}
