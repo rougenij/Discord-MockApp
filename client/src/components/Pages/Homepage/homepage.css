@@ -22,6 +22,10 @@ body {
 .firstsection-description {
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+.firstsection-buttons {
+  display: flex;
+  gap: 2rem;
+}
 /* Second Section */
 .second-section {
   padding-top: 4rem;
@@ -48,4 +52,83 @@ body {
 .secondsection-rightside-lowerside {
   max-width: 40ch;
   font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Third Section */
+.third-section {
+  padding-top: 4rem;
+  background-color: #f6f6f6;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+}
+.thirdsection-rightside {
+  background: url("../../../View/assets/images/discord-third-section.png")
+    center center/100% 100% no-repeat;
+  height: 100%;
+  width: 40%;
+}
+
+.thirdsection-leftside {
+  width: 20%;
+}
+.thirdsection-leftside-upperside {
+  font-size: 1.9rem;
+}
+
+/* Fourth Section */
+.fourth-section {
+  padding-top: 4rem;
+  background-color: white;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  align-items: center;
+}
+.fourthsection-leftside {
+  background: url("../../../View/assets/images/discord-fourth-section.png")
+    center center/100% 100% no-repeat;
+  height: 100%;
+  width: 40%;
+}
+
+.fourthsection-rightside-upperside {
+  font-size: 1.8rem;
+  max-width: 20ch;
+  font-family: "Ginto Normal", Whitney, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+.fourthsection-rightside-lowerside {
+  max-width: 40ch;
+  font-family: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Fifth Section */
+.fifth-section {
+  padding-top: 4rem;
+  background-color: #f6f6f6;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.fifthsection-picture {
+  background: url("../../../View/assets/images/discord-fifth-section.png")
+    center center/100% 100% no-repeat;
+  height: 100%;
+  width: 50%;
+}
+.fifthsection-description {
+  text-align: center;
+  font-size: 1.2rem;
+  width: 51%;
+}
+.fifthsection-title {
+  font-size: 1.8rem;
+  font-family: "Ginto Normal", Whitney, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
