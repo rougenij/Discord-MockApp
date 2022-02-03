@@ -7,7 +7,7 @@ function Homepage() {
   return (
     <div className="homepage-container">
       <Header />
-      <main>
+      <main className="homepage-container">
         <div className="first-section">
           <div className="firstsection-title">
             <h1>IMAGINE A PLACE...</h1>
