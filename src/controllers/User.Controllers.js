@@ -1,17 +1,13 @@
-const express = require("express");
 const User = require("../model/User");
 
 const addUser = async (req, res) => {
   try {
-    const user = await new userModel(req.body);
+    const user = await new User(req.body);
     await user.save();
-    res
-      .status(201)
-      .send({ status: "success", message: "User has been created" });
+    const token = await user.generateAuthToken();
+    res.status(201).send(user, token);
   } catch (err) {
-    res
-      .status(400)
-      .send({ status: "failed", message: "Failed to create user" });
+    res.status(400).send(err.message);
   }
 };
 

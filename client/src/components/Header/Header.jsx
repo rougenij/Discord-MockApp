@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./header.css";
 
 function Header() {
@@ -16,7 +17,9 @@ function Header() {
         <span>Careers</span>
       </div>
       <div className="button-rightside">
-        <button>Open Discord</button>
+        <Link to="/login">
+          <button>Open Discord</button>
+        </Link>
       </div>
     </header>
   );

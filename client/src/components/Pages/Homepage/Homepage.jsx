@@ -5,7 +5,7 @@ import "./homepage.css";
 
 function Homepage() {
   return (
-    <div>
+    <div className="homepage-container">
       <Header />
       <main>
         <div className="first-section">

@@ -27,8 +27,8 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  dateofbirth: {
-    type: Date,
+  age: {
+    type: Number,
     required: true,
   },
   tokens: [
@@ -53,7 +53,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generateAuthToken = async function () {
   const user = this;
-  const token = jwt.sign({ _id: user._id.toString() }, proccess.env.SECRET);
+  const token = jwt.sign({ _id: user._id.toString() }, process.env.SECRET);
 
   user.tokens = user.tokens.concat({ token });
   await user.save();
