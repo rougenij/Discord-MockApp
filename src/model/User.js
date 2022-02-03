@@ -23,11 +23,12 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   password: {
+    type: String,
     required: true,
     trim: true,
   },
   dateofbirth: {
-    type: Date(),
+    type: Date,
     required: true,
   },
   tokens: [

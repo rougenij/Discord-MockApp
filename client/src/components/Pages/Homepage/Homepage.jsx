@@ -25,7 +25,7 @@ function Homepage() {
           </div>
           <div className="firstsection-buttons">
             <Button
-              name="Download for Windows"
+              name="↓ Download for Windows"
               backgroundcolor="white"
               color="black"
             />
