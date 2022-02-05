@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./signin.css";
 
 function Signin() {
@@ -33,7 +34,7 @@ function Signin() {
           <button className="signin-loginButton">Login</button>
         </div>
         <span style={{ color: "#b9bbbe" }}>
-          Need an account? <a href="/">Register</a>
+          Need an account? <Link to="/register">Register</Link>
         </span>
       </div>
     </div>
