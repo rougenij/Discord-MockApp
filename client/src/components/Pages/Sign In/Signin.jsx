@@ -12,20 +12,28 @@ function Signin() {
             We're so excited to see you again!
           </span>
         </div>
-        <div>
-          <label>EMAIL</label>
-          <input type="email" />
+        <div className="signin-emailsection">
+          <div>
+            <label>EMAIL ADDRESS</label>
+          </div>
+          <div>
+            <input type="email" className="signin-emailinput" />
+          </div>
         </div>
-        <div>
-          <label>PASSWORD</label>
-          <input type="password" />
+        <div className="signin-passwordsection">
+          <div>
+            <label>PASSWORD</label>
+          </div>
+          <div>
+            <input type="password" className="signin-passwordinput" />
+          </div>
         </div>
-        <span>Forgot your password?</span>
-        <div>
-          <button>Login</button>
+        <a href="/">Forgot your password?</a>
+        <div className="signin-buttonholder">
+          <button className="signin-loginButton">Login</button>
         </div>
-        <span>
-          Need an account? <button>Register</button>
+        <span style={{ color: "#b9bbbe" }}>
+          Need an account? <a href="/">Register</a>
         </span>
       </div>
     </div>
