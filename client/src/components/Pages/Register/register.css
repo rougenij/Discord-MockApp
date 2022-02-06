@@ -1,0 +1,18 @@
+.register-floatingmiddlebox {
+  background-color: #36393f;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 45%;
+}
+.register-middlebox-el {
+  display: flex;
+  flex-direction: column;
+}
+.register-middlebox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0 1rem;
+}

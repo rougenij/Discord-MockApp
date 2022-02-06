@@ -6,7 +6,7 @@ function Header() {
   return (
     <header>
       <div className="logo-leftside">
-        <i class="fab fa-discord"></i>Discord
+        <i className="fab fa-discord"></i>Discord
       </div>
       <div className="buttons-mid-navbar">
         <span>Download</span>

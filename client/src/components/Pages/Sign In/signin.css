@@ -17,7 +17,9 @@ a {
   position: absolute;
   display: flex;
   flex-direction: column;
-  width: 35%;
+  justify-content: center;
+  align-items: center;
+  width: 70vmin;
   height: 45%;
 }
 .signin-upper-section {
