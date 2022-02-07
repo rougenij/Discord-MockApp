@@ -1,7 +1,7 @@
 require("./src/db/mongoose");
 const http = require("http");
 const express = require("express");
-const userRouter = require("./src/routes/User.Routes");
+const Router = require("./src/routes/Index.Routes");
 const cors = require("cors");
 const path = require("path");
 const socketio = require("socket.io");
@@ -13,7 +13,7 @@ const io = socketio(server);
 
 app.use(cors());
 app.use(express.json());
-app.use("/api", userRouter);
+app.use("/api", Router);
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "client/build");
