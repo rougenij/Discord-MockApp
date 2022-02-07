@@ -1,0 +1,17 @@
+.chat-MainWrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.chatMenu {
+  flex: 2.5;
+  background-color: cyan;
+}
+.chatBox {
+  flex: 6;
+  background-color: rgb(27, 95, 95);
+}
+.chatOnline {
+  flex: 2;
+  background-color: rgb(41, 71, 71);
+}
