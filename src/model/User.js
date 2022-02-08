@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  profileImg: {
+    type: String,
+    required: true,
+  },
   tokens: [
     {
       token: {

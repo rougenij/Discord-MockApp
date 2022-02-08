@@ -34,6 +34,7 @@ function Signin() {
         console.log(data);
         if (data.data.status === "success") {
           history.push("/chat");
+          localStorage.setItem("User ID", data.data.id);
         } else {
           history.push("/login");
         }

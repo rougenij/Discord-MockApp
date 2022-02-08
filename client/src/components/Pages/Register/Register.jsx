@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import myApi from "../../../API/api";
 import "./register.css";
 
@@ -7,6 +7,8 @@ function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const onEmailChange = (value) => {
     setEmail(value);
@@ -21,11 +23,18 @@ function Register() {
   };
 
   const continueHandle = () => {
-    myApi.post("/users", {
-      email,
-      username: name,
-      password,
-    });
+    myApi
+      .post("/users", {
+        email,
+        username: name,
+        password,
+        profileImg: "https://picsum.photos/200/300",
+      })
+      .then((data) => {
+        if (data.data.status === "success") {
+          history.push("/login");
+        }
+      });
   };
   return (
     <div className="signin-maincontainer">
