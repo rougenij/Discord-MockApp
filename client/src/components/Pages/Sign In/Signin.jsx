@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./signin.css";
 import myApi from "../../../API/api";
@@ -23,6 +23,12 @@ function Signin() {
     }
   };
 
+  //If User is already logged in, it'll take him to the chat directly, no need to login again
+  useEffect(() => {
+    let isLoggedin = localStorage.getItem("isLoggedin");
+    isLoggedin ? history.push("/chat") : history.push("/login");
+  }, [history]);
+
   const loginHandle = () => {
     if (!email || !password) return;
     myApi
@@ -33,6 +39,7 @@ function Signin() {
       .then((data) => {
         console.log(data);
         if (data.data.status === "success") {
+          localStorage.setItem("isLoggedin", true);
           history.push("/chat");
           localStorage.setItem("User ID", data.data.id);
         } else {

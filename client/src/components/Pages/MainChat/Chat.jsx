@@ -13,13 +13,12 @@ function Chat() {
   }, []);
 
   useEffect(() => {
+    const fetchProfileData = async () => {
+      const data = await myApi.get(`/users/${userID}`);
+      setLoggedUser(data.data[0]);
+    };
     fetchProfileData();
-  });
-
-  const fetchProfileData = async () => {
-    const data = await myApi.get(`/users/${userID}`);
-    setLoggedUser(data.data[0]);
-  };
+  }, [userID]);
 
   return (
     <div className="chat-MainWrapper">
@@ -33,7 +32,12 @@ function Chat() {
           <Conversation />
         </div>
         <div className="chatMenuBottom">
-          <img src={loggedUser.profileImg} alt="" />
+          <img
+            src={loggedUser.profileImg}
+            alt=""
+            className="chatMenuBottom-ProfileImg"
+          />
+          <span>{loggedUser.username}</span>
         </div>
       </div>
       <div className="chatBox">
