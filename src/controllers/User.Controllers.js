@@ -1,5 +1,15 @@
 const User = require("../model/User");
 
+const getAllUsers = async (req, res) => {
+  try {
+    const allUsers = await User.find({});
+    if (!allUsers) return res.status(400).send("No Users in the database");
+    res.status(200).send(allUsers);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+};
+
 const getUserByID = async (req, res) => {
   try {
     const id = req.params.userid;
@@ -49,4 +59,4 @@ const logOut = async (req, res) => {
   }
 };
 
-module.exports = { addUser, logIn, logOut, getUserByID };
+module.exports = { addUser, logIn, logOut, getUserByID, getAllUsers };

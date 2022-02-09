@@ -5,11 +5,13 @@ const {
   logIn,
   logOut,
   getUserByID,
+  getAllUsers,
 } = require("../controllers/User.Controllers");
 
 // API ROUTER
 const userRouter = express.Router();
 
+userRouter.get("/users", getAllUsers);
 userRouter.get("/users/:userid", getUserByID);
 
 userRouter.post("/users", addUser);

@@ -20,6 +20,7 @@ const publicDirectoryPath = path.join(__dirname, "client/build");
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
+res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
 
 io.on("connection", () => {
   console.log("New WebSocket connection");
