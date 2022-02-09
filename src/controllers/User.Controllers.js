@@ -40,7 +40,7 @@ const logIn = async (req, res) => {
       req.body.password
     );
     const token = await user.generateAuthToken();
-    res.status(200).send({ user, token });
+    res.status(200).send({ status: "success", user, token });
   } catch (e) {
     res.status(400).send(e.message);
   }
