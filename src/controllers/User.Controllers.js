@@ -10,10 +10,10 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const getUserByID = async (req, res) => {
+const getUserByToken = async (req, res) => {
   try {
-    const id = req.params.userid;
-    const searchedUser = await User.find({ id });
+    const token = req.params.token;
+    const searchedUser = await User.findOne({ token });
     if (!searchedUser) return res.status(400).send("User was not found");
     res.status(200).send(searchedUser);
   } catch (err) {
@@ -24,23 +24,23 @@ const getUserByID = async (req, res) => {
 const addUser = async (req, res) => {
   try {
     const user = await new User(req.body);
-    await user.save();
     const token = await user.generateAuthToken();
+    await user.save();
     res.status(201).send({ status: "success" });
   } catch (err) {
-    res.status(400).send({ status: "failed" });
+    res.status(400).send(err.message);
   }
 };
 
 const logIn = async (req, res) => {
   try {
-    console.log(req.body.email, req.body.password);
+    //findByCredentials - madeup function that has been created at the user model
     const user = await User.findByCredentials(
       req.body.email,
       req.body.password
     );
     const token = await user.generateAuthToken();
-    res.send({ status: "success", id: user._id });
+    res.status(200).send({ user, token });
   } catch (e) {
     res.status(400).send(e.message);
   }
@@ -59,4 +59,24 @@ const logOut = async (req, res) => {
   }
 };
 
-module.exports = { addUser, logIn, logOut, getUserByID, getAllUsers };
+const searchforUsers = async (req, res) => {
+  const userId = req.query.userId;
+  const username = req.query.username;
+  try {
+    const user = userId
+      ? await User.findById(userId)
+      : await User.findOne({ username: username });
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+};
+
+module.exports = {
+  addUser,
+  logIn,
+  logOut,
+  getUserByToken,
+  getAllUsers,
+  searchforUsers,
+};

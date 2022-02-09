@@ -13,27 +13,29 @@ function Chat() {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
-    const getConversation = async () => {
-      try {
-        const res = await myApi.get(`/conversation/${loggedUser._id}`);
-        setConversation(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getConversation();
-  }, [loggedUser._id]);
-
-  useEffect(() => {
-    setToken(localStorage.getItem("Token"));
-  }, []);
-  useEffect(() => {
     const fetchProfileData = async () => {
       const data = await myApi.get(`/users/${token}`);
       setLoggedUser(data.data[0]);
     };
     fetchProfileData();
   }, [token]);
+
+  useEffect(() => {
+    const getConversation = async () => {
+      try {
+        const res = await myApi.get(`/conversation/${loggedUser?._id}`);
+        setConversation(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getConversation();
+  }, [loggedUser?._id]);
+
+  useEffect(() => {
+    setToken(localStorage.getItem("Token"));
+  }, []);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -79,11 +81,11 @@ function Chat() {
         </div>
         <div className="chatMenuBottom">
           <img
-            src={loggedUser.profileImg}
+            src={loggedUser?.profileImg}
             alt=""
             className="chatMenuBottom-ProfileImg"
           />
-          <span>{loggedUser.username}</span>
+          <span>{loggedUser?.username}</span>
         </div>
       </div>
       <div className="chatBox">
