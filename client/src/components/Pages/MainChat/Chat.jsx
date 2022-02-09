@@ -5,31 +5,77 @@ import Message from "../../Message/Message";
 import "./chat.css";
 
 function Chat() {
-  const [userID, setUserID] = useState("");
+  const [token, setToken] = useState("");
   const [loggedUser, setLoggedUser] = useState({});
+  const [conversation, setConversation] = useState([]);
+  const [currentChat, setCurrentChat] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
-    setUserID(localStorage.getItem("User ID"));
-  }, []);
+    const getConversation = async () => {
+      try {
+        const res = await myApi.get(`/conversation/${loggedUser._id}`);
+        setConversation(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getConversation();
+  }, [loggedUser._id]);
 
+  useEffect(() => {
+    setToken(localStorage.getItem("Token"));
+  }, []);
   useEffect(() => {
     const fetchProfileData = async () => {
-      const data = await myApi.get(`/users/${userID}`);
+      const data = await myApi.get(`/users/${token}`);
       setLoggedUser(data.data[0]);
     };
     fetchProfileData();
-  }, [userID]);
+  }, [token]);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await myApi.get("/message/" + currentChat?._id);
+        setMessages(res.data);
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    getMessages();
+  }, [currentChat]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const messageObj = {
+      sender: loggedUser._id,
+      text: newMessage,
+      conversationId: currentChat._id,
+    };
+
+    try {
+      const res = await myApi.post("/message", messageObj);
+      setMessages([...messages, res.data]);
+      setNewMessage("");
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
 
   return (
     <div className="chat-MainWrapper">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
           <input placeholder="Search for friends" className="chatMenuInput" />
-          <Conversation />
-          <Conversation />
-          <Conversation />
-          <Conversation />
-          <Conversation />
+          {conversation.map((c, i) => {
+            return (
+              <div key={i} onClick={() => setCurrentChat(c)}>
+                <Conversation conversation={c} currentUser={loggedUser} />
+              </div>
+            );
+          })}
         </div>
         <div className="chatMenuBottom">
           <img
@@ -42,23 +88,36 @@ function Chat() {
       </div>
       <div className="chatBox">
         <div className="chatBoxWrapper">
-          <div className="chatBoxTop">
-            <Message />
-            <Message own />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-            <Message />
-          </div>
-          <div className="chatBoxBottom">
-            <textarea
-              placeholder="Send a message"
-              className="chatMessageInput"
-            ></textarea>
-            <button className="chatSubmitButton">Send</button>
-          </div>
+          {currentChat ? (
+            <>
+              <div className="chatBoxTop">
+                {messages.map((m, i) => {
+                  return (
+                    <Message
+                      key={i}
+                      message={m}
+                      own={m.sender === loggedUser._id}
+                    />
+                  );
+                })}
+              </div>
+              <div className="chatBoxBottom">
+                <textarea
+                  placeholder="Send a message"
+                  className="chatMessageInput"
+                  onChange={(e) => setNewMessage(e.target.value)}
+                  value={newMessage}
+                ></textarea>
+                <button className="chatSubmitButton" onClick={handleSubmit}>
+                  Send
+                </button>
+              </div>{" "}
+            </>
+          ) : (
+            <span className="noConversationText">
+              Open a conversation to start a chat
+            </span>
+          )}
         </div>
       </div>
     </div>

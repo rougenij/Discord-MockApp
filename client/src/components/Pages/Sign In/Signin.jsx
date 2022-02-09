@@ -41,7 +41,7 @@ function Signin() {
         if (data.data.status === "success") {
           localStorage.setItem("isLoggedin", true);
           history.push("/chat");
-          localStorage.setItem("User ID", data.data.id);
+          localStorage.setItem("Token", data.data.token);
         } else {
           history.push("/login");
         }
