@@ -13,11 +13,18 @@ function Chat() {
   const [newMessage, setNewMessage] = useState("");
 
   useEffect(() => {
+    setToken(localStorage.getItem("Token"));
+  }, []);
+
+  useEffect(() => {
     const fetchProfileData = async () => {
-      const data = await myApi.get(`/users/${token}`);
-      setLoggedUser(data.data[0]);
+      const data = await myApi.get(`/users/getUserDetails`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log(data.data);
+      setLoggedUser(data.data);
     };
-    fetchProfileData();
+    token && fetchProfileData();
   }, [token]);
 
   useEffect(() => {
@@ -30,12 +37,8 @@ function Chat() {
       }
     };
 
-    getConversation();
-  }, [loggedUser?._id]);
-
-  useEffect(() => {
-    setToken(localStorage.getItem("Token"));
-  }, []);
+    loggedUser && getConversation();
+  }, [loggedUser]);
 
   useEffect(() => {
     const getMessages = async () => {
@@ -70,7 +73,10 @@ function Chat() {
     <div className="chat-MainWrapper">
       <div className="chatMenu">
         <div className="chatMenuWrapper">
-          <input placeholder="Search for friends" className="chatMenuInput" />
+          <input
+            placeholder="Search for a specfic user"
+            className="chatMenuInput"
+          />
           {conversation.map((c, i) => {
             return (
               <div key={i} onClick={() => setCurrentChat(c)}>

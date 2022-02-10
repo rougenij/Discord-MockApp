@@ -12,10 +12,7 @@ const getAllUsers = async (req, res) => {
 
 const getUserByToken = async (req, res) => {
   try {
-    const token = req.params.token;
-    const searchedUser = await User.findOne({ token });
-    if (!searchedUser) return res.status(400).send("User was not found");
-    res.status(200).send(searchedUser);
+    res.status(200).send(req.user);
   } catch (err) {
     res.status(400).send(err.message);
   }

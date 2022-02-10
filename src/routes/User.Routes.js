@@ -14,7 +14,7 @@ const userRouter = express.Router();
 
 userRouter.get("/users", getAllUsers);
 userRouter.get("/user", searchforUsers);
-userRouter.get("/users/:token", getUserByToken);
+userRouter.get("/users/getUserDetails", auth, getUserByToken);
 
 userRouter.post("/users", addUser);
 userRouter.post("/users/login", logIn);
