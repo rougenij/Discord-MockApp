@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import myApi from "../../../API/api";
 import Conversation from "../../Conversations/Conversation";
 import Message from "../../Message/Message";
+import { io } from "socket.io-client";
 import "./chat.css";
 
 function Chat() {
@@ -11,17 +12,28 @@ function Chat() {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
     setToken(localStorage.getItem("Token"));
   }, []);
+  useEffect(() => {
+    if (socket === null) {
+      setSocket(io("http://localhost:5000"));
+    }
+    if (socket) {
+      socket.on("getMessage", (message) => {
+        console.log(message);
+        setMessages(messages.concat(message));
+      });
+    }
+  });
 
   useEffect(() => {
     const fetchProfileData = async () => {
       const data = await myApi.get(`/users/getUserDetails`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      console.log(data.data);
       setLoggedUser(data.data);
     };
     token && fetchProfileData();
@@ -62,7 +74,8 @@ function Chat() {
 
     try {
       const res = await myApi.post("/message", messageObj);
-      setMessages([...messages, res.data]);
+      // setMessages([...messages, res.data]);
+      socket.emit("sendMessage", messageObj);
       setNewMessage("");
     } catch (err) {
       console.log(err.message);

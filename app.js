@@ -34,5 +34,7 @@ const chatMessage = io(server, {
 });
 
 chatMessage.on("connection", (socket) => {
-  socket.on;
+  socket.on("sendMessage", (message) => {
+    chatMessage.emit("getMessage", message);
+  });
 });
