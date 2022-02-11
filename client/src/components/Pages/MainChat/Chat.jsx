@@ -19,7 +19,7 @@ function Chat() {
   }, []);
   useEffect(() => {
     if (socket === null) {
-      setSocket(io("http://localhost:5000"));
+      setSocket(io("https://discord-mock.herokuapp.com/"));
     }
     if (socket) {
       socket.on("getMessage", (message) => {
