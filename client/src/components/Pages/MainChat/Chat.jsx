@@ -23,7 +23,6 @@ function Chat() {
     }
     if (socket) {
       socket.on("getMessage", (message) => {
-        console.log(message);
         setMessages(messages.concat(message));
       });
     }
