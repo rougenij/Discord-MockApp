@@ -73,7 +73,7 @@ function Chat() {
     };
 
     try {
-      const res = await myApi.post("/message", messageObj);
+      await myApi.post("/message", messageObj);
       // setMessages([...messages, res.data]);
       socket.emit("sendMessage", messageObj);
       setNewMessage("");
