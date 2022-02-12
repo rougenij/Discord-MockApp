@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh -50px);
+  background-color: rgb(235, 232, 232);
 }
 .chatMenuBottom-ProfileImg {
   border-radius: 50%;
