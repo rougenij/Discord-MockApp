@@ -5,6 +5,7 @@ Appleseeds Final Project
 1. ReactJS
 2. NodeJS
 3. MongoDB and Mongoose
+4. socket.io
 
 [Discord Mock Chatting App](https://discord-mock.herokuapp.com/)
 
