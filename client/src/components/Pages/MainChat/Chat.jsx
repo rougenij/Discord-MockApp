@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import myApi from "../../../API/api";
 import Conversation from "../../Conversations/Conversation";
 import Message from "../../Message/Message";
+import UpdateUser from "../UpdateUser/UpdateUser";
 import { io } from "socket.io-client";
+import { useHistory, Link } from "react-router-dom";
 import "./chat.css";
 
 function Chat() {
@@ -12,7 +14,10 @@ function Chat() {
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [display, setDisplay] = useState(false);
   const [socket, setSocket] = useState(null);
+
+  const history = useHistory();
 
   useEffect(() => {
     setToken(localStorage.getItem("Token"));
@@ -73,12 +78,24 @@ function Chat() {
 
     try {
       await myApi.post("/message", messageObj);
-      // setMessages([...messages, res.data]);
       socket.emit("sendMessage", messageObj);
       setNewMessage("");
     } catch (err) {
       console.log(err.message);
     }
+  };
+
+  const handleUserUpdate = () => {
+    setDisplay(true);
+  };
+
+  const handleUserLogOut = () => {
+    localStorage.clear();
+    history.push("/login");
+  };
+
+  const handleStartNewConvo = () => {
+    localStorage.setItem("LoggedUserID", loggedUser._id);
   };
 
   return (
@@ -89,6 +106,11 @@ function Chat() {
             placeholder="Search for a specfic user"
             className="chatMenuInput"
           />
+          <Link to="/allusers">
+            <button onClick={handleStartNewConvo}>
+              Start a new Conversation
+            </button>
+          </Link>
           {conversation.map((c, i) => {
             return (
               <div key={i} onClick={() => setCurrentChat(c)}>
@@ -104,6 +126,8 @@ function Chat() {
             className="chatMenuBottom-ProfileImg"
           />
           <span>{loggedUser?.username}</span>
+          <button onClick={handleUserUpdate}>Update User</button>
+          <button onClick={handleUserLogOut}>Log Out</button>
         </div>
       </div>
       <div className="chatBox">
