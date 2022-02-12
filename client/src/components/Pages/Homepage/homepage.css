@@ -132,3 +132,23 @@
   font-family: "Ginto Normal", Whitney, "Helvetica Neue", Helvetica, Arial,
     sans-serif;
 }
+
+/* RESPONSIVE */
+
+@media only screen and (min-width: 360px) and (max-width: 768px) {
+  header {
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    font-size: 10px;
+  }
+  .logo-leftside {
+    font-size: 1rem;
+  }
+  .buttons-mid-navbar {
+    display: none;
+  }
+  .homepage-container {
+    width: 100%;
+  }
+}
