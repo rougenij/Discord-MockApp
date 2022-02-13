@@ -33,10 +33,11 @@ Basically I went with this idea to mock the chatting app Discord is to learn abo
 
 ## Future Plans for this project:
 1. Be able to create chat rooms  of more than two people
-2. Add an option of voice calling and Video chatting
-3. Create Servers with different channels to join and chat in
-4. File Upload, be able to upload files -> In a chat and in a server
-5. Update User Page
+2. Send an Email on register
+3. Add an option of voice calling and Video chatting
+4. Create Servers with different channels to join and chat in
+5. File Upload, be able to upload files -> In a chat and in a server
+6. Update User Page
 
 ### CopyRight Claim
 
