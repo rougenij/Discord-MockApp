@@ -5,12 +5,12 @@ Appleseeds Final Project
 1. ReactJS
 2. NodeJS
 3. MongoDB and Mongoose
-4. socket.io
+4. Socket.io
 
 [Discord Mock Chatting App](https://discord-mock.herokuapp.com/)
 
 # Reason why i picked this project:
-Basically I went with this idea to mock the chatting app Discord is to learn about an amazing app that I use on a daily basis that helps me enjoy my time with my friends & I wanted to know how it is to build such an app, in addition it was a good opportunity to learn about socket.io
+Basically I went with this idea to mock the chatting app Discord is to learn about an amazing app that I use on a daily basis that helps me enjoy my time with my friends & I wanted to know how it is to build such an app, in addition it was a good opportunity to learn about Socket.io
 
 
 
