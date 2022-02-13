@@ -7,8 +7,9 @@ Appleseeds Final Project
 ### This Project was made by using:
 1. ReactJS
 2. NodeJS
-3. MongoDB and Mongoose
-4. Socket.io
+3. ExpressJS
+4. MongoDB and Mongoose
+5. Socket.io
 
 
 
