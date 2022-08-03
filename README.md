@@ -1,5 +1,4 @@
 # Discord-MockApp
-Appleseeds Final Project
 ---------------------
 [Live Demo: Discord Mock Chatting App](https://discord-mock.herokuapp.com/)
 ------------------
